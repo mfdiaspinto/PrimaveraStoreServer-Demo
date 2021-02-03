@@ -61,13 +61,13 @@ namespace PrimaveraStoreServer.Controllers
             }
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("odata/{module}/{service}/{key}")]
         public async Task<bool> ValidateOdata(string module, string service, string key)
         {
             return await EntitiesManager.ValidateOdataAsync(this.AuthenticationProvider,module , service, key);
         }
-
+        */
         #endregion
 
         #region invoices

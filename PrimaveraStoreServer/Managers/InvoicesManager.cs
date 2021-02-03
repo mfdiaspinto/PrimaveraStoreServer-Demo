@@ -21,16 +21,6 @@ namespace PrimaveraStoreServer.Managers
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the products.
-        /// </summary>
-        public static List<ProductResource> Products { get; set; } = new List<ProductResource>()
-        {
-            new ProductResource() { key = "FA-0001", price = 4.6M, sync = false, title = "Abacate", category= "Fruta"},
-            new ProductResource() { key = "FL-0002", price = 1.5M, sync = false, title = "Laranja", category= "Fruta"},
-            new ProductResource() { key = "FM-0003", price = 1.5M, sync = false, title = "Maça", category= "Fruta"}
-        };
-
-        /// <summary>
         /// Gets or sets the subscription key.
         /// </summary>
         public static string SubscriptionKey { get; set; }
