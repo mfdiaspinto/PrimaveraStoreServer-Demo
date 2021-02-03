@@ -37,3 +37,15 @@ Para tal é composto por dois projetos
 
 ![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/Configura%C3%A7%C3%A3o.PNG?raw=true)
 
+
+## Usar testes unitários 
+
+Existem um conjunto de testes unitários que podem ser executados individualmente onde se var o processo de integração
+
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/UnitTests.PNG?raw=true)
+
+## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do prototipo Store e podem ser executadas via postman 
+
+Existem um conjunto de apis disponiveis no projeto api que demonstram a execução de alguns cenários de integração
+
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/doc.PNG?raw=true)
