@@ -42,7 +42,7 @@ Para tal é composto por dois projetos
 
 Existem um conjunto de testes unitários que podem ser executados individualmente onde se var o processo de integração
 
-![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/UnitTests.PNG?raw=true)
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/unittests.PNG?raw=true)
 
 ## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do prototipo Store e podem ser executadas via postman 
 
