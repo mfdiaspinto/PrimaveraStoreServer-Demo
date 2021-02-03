@@ -1,7 +1,7 @@
 # Primavera Store Server - Demo
-Pequeno projeto de integração com o PRIMAVERA Invoicing Engine
+Demo de projeto de integração com o PRIMAVERA Invoicing Engine
 
-Este Prototipo tem como objetivo dar alguns exemplos de utilização da API do Invoicing Engine e do seu Middleware
+Este prototipo tem como objetivo dar alguns exemplos de utilização da API do Invoicing Engine e do seu Middleware
 
 Para tal é composto por dois projetos
  - PrimaveraStoreServer (WebAPI)
@@ -20,4 +20,19 @@ Para tal é composto por dois projetos
   
    ## Como começar:
    
-   Alterar no ficheiro de constraints as seguintes variaveis
+   Alterar no ficheiro de constantes as seguintes variaveis se necessário
+   
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/Configura%C3%A7%C3%A3o.PNG?raw=true)
+
+- ClientId 
+> Cliente para autenticar os pedidos
+- ClientSecret
+> Secret para autenticar os pedidos
+-Account e Subscription
+> o Cliente deve ter acesso a esta conta
+- IdentityUrl 
+> por defeito está o url de staging
+-BaseAppUrl
+> por defeito está o url de staging
+- Company
+> empresa tem de existir na subscrição
