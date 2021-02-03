@@ -10,9 +10,11 @@ namespace PrimaveraStoreServer.Resources
         public string BuyerCustomerParty { get; set; }
 
         public string BuyerCustomerPartyName { get; set; }
+
         public string BuyerCustomerPartyAddress { get; set; }
 
         public string AccountingPartyName { get; set; }
+
         public string AccountingPartyAddress { get; set; }
 
         public string Company { get; set; }
@@ -20,7 +22,6 @@ namespace PrimaveraStoreServer.Resources
         public string Note { get; set; }
 
         public double? Discount { get; set; }
-
 
         public string Currency { get; set; }
 

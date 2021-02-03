@@ -49,7 +49,7 @@ namespace PrimaveraStoreServer.Controllers
 
         [HttpPost]
         [Route("customers")]
-        public async Task<ActionResult<string>> PostCustomerItem([FromBody] Shipping customer)
+        public async Task<ActionResult<string>> PostCustomerItem([FromBody] Client customer)
         { 
             try
             {

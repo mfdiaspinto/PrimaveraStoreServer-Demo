@@ -45,7 +45,7 @@ namespace PrimaveraStoreServer.Resources
             return invoice;
         }
 
-        public static  CustomerResource ToCustomer(Shipping customer)
+        public static  CustomerResource ToCustomer(Client customer)
         {
             CustomerResource resource = new CustomerResource()
             {

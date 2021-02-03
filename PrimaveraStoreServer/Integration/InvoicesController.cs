@@ -35,7 +35,7 @@ namespace PrimaveraStoreServer.Integration
 
                 string url = string.Format(
                         InvoicingEngineRoutes.InvoicesPostRoute,
-                        InvoicingEngineRoutes.InvoicingEngineUrlBase,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         InvoicingEngineRoutes.InvoicesUrlBase);
@@ -64,7 +64,7 @@ namespace PrimaveraStoreServer.Integration
                 client.DefaultRequestHeaders.Add(Constants.RequestHeaders.AcceptLanguageHeaderKey, "en-US");
 
                 string url = string.Format(InvoicingEngineRoutes.InvoicesPrintUrlBase,
-                        InvoicingEngineRoutes.InvoicingEngineUrlBase,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         InvoicingEngineRoutes.InvoicesUrlBase,

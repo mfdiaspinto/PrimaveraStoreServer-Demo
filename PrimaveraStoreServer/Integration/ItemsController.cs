@@ -35,7 +35,7 @@ namespace PrimaveraStoreServer.Integration
 
                 string url = string.Format(
                         InvoicingEngineRoutes.ItemPostRoute,
-                        InvoicingEngineRoutes.InvoicingEngineUrlBase,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         InvoicingEngineRoutes.ItemUrlBase);
@@ -63,6 +63,7 @@ namespace PrimaveraStoreServer.Integration
 
                 string url = string.Format(
                         InvoicingEngineRoutes.ItemValidateRoute,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         module,

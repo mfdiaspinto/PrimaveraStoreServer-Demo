@@ -55,7 +55,7 @@ namespace PrimaveraStoreServer.Managers
             return false;
         }
 
-        public static async Task<string> CreateCustomersAsync(AuthenticationProvider authenticationProvider, Shipping customer)
+        public static async Task<string> CreateCustomersAsync(AuthenticationProvider authenticationProvider, Client customer)
         {
             try
             {

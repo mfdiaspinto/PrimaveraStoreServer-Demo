@@ -34,11 +34,7 @@ namespace TestIntegrations
             using (var controllerStore = new StoreController(AuthenticationProvider))
             {
                 // Produto para criar no invoicing
-                ProductResource product = new ProductResource()
-                {
-                    key = "Cad-0001",
-                    title = "Descrição da cadeira"
-                };
+                ProductResource product = new ProductResource("Cad-0001", "Descrição da cadeira");
 
                 var result = await controllerStore.PostItem(product);
 
@@ -52,35 +48,42 @@ namespace TestIntegrations
         }
 
         [TestMethod]
-        public async Task CreateInvoice()
+        public async Task CreateCustomerAsync()
         {
             using (var controllerStore = new StoreController(AuthenticationProvider))
             {
                 // Produto para criar no invoicing
-                OrderResource order = new OrderResource()
+                Client resource = new Client("C-MD-0001", "Miguel Dias", "Rua dos Bombeiros", "Leiria", "4509-003");
+
+                var result = await controllerStore.PostCustomerItem(resource);
+
+                if (string.IsNullOrEmpty(result.Value))
                 {
-                    key = "ENC.2021.1",
-                    items = new List<ItemLine>()
-                      {
-                          new ItemLine()
-                          {
-                               product = new Product()
-                               {
-                                    key = "Cad-0001",
-                                    price = 10,
-                                    title = "Cadeira Branca 0001"
-                               },
-                               quantity = 2
-                          }
-                      },
-                    shipping = new Shipping()
+                    throw new Exception((result.Result as ObjectResult).Value.ToString());
+                }
+
+                Assert.IsTrue(!string.IsNullOrEmpty(result.Value));
+            }
+        }
+
+        [TestMethod]
+        public async Task CreateInvoice()
+        {
+            using (var controllerStore = new StoreController(AuthenticationProvider))
+            {
+                List<ItemLine> items = new List<ItemLine>()
+                {
+                    new ItemLine()
                     {
-                        name = "Rui Fernandes",
-                        addressLine1 = "Rua de testes",
-                        city = "Braga"
-                              , key = "INDIF"
+                        product = new Product("Cad-0001", "Cadeira Branca 0001", 10),
+                        quantity = 2
                     }
                 };
+
+                Client shipping = new Client("INDIF", "Miguel Dias", "Rua dos Bombeiros", "Leiria", "4509-003");
+
+                // order para criar no invoicing
+                OrderResource order = new OrderResource("ENC.2021.1", shipping, items);
 
                 var result = await controllerStore.PostInvoice(order);
 
@@ -99,31 +102,19 @@ namespace TestIntegrations
             using (var controllerStore = new StoreController(AuthenticationProvider))
             {
                 // order para criar no invoicing
-                OrderResource order = new OrderResource()
+                List<ItemLine> items = new List<ItemLine>()
                 {
-                    key = "ENC.2021.1",
-                    items = new List<ItemLine>()
-                      {
-                          new ItemLine()
-                          {
-                               product = new Product()
-                               {
-                                    key = "Cad-0001",
-                                    price = 10,
-                                    title = "Cadeira Branca 0001"
-                               },
-                               quantity = 2
-                          }
-                      },
-                    shipping = new Shipping()
+                    new ItemLine()
                     {
-                        name = "Rui Fernandes",
-                        addressLine1 = "Rua de testes",
-                        city = "Braga"
-                              ,
-                        key = "INDIF"
+                        product = new Product("Cad-0001", "Cadeira Branca 0001", 10),
+                        quantity = 2
                     }
                 };
+
+                Client shipping = new Client("INDIF", "Miguel Dias", "Rua dos Bombeiros", "Leiria", "4509-003");
+
+                // order para criar no invoicing
+                OrderResource order = new OrderResource("ENC.2021.1", shipping, items);
 
                 var result = await controllerStore.PostInvoiceAsync(order);
 
@@ -150,31 +141,19 @@ namespace TestIntegrations
                     i++;
 
                     // order para criar no invoicing
-                    OrderResource order = new OrderResource()
+                    List<ItemLine> items = new List<ItemLine>()
                     {
-                        key = "ENC.2021."+ i,
-                        items = new List<ItemLine>()
-                      {
-                          new ItemLine()
-                          {
-                               product = new Product()
-                               {
-                                    key = "Cad-0001",
-                                    price = 10,
-                                    title = "Cadeira Branca 0001"
-                               },
-                               quantity = 2
-                          }
-                      },
-                        shipping = new Shipping()
+                        new ItemLine()
                         {
-                            name = "Rui Fernandes",
-                            addressLine1 = "Rua de testes",
-                            city = "Braga"
-                                  ,
-                            key = "INDIF"
+                            product = new Product("Cad-0001", "Cadeira Branca 0001", 10),
+                            quantity = 2
                         }
                     };
+
+                    Client shipping = new Client("INDIF", "Miguel Dias", "Rua dos Bombeiros", "Leiria", "4509-003");
+
+                    // order para criar no invoicing
+                    OrderResource order = new OrderResource("ENC.2021." + i, shipping, items);
 
                     orders.Add(order);
                 }

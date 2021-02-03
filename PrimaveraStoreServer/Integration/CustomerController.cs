@@ -35,7 +35,7 @@ namespace PrimaveraStoreServer.Integration
 
                 string url = string.Format(
                         InvoicingEngineRoutes.CustomerPostRoute,
-                        InvoicingEngineRoutes.InvoicingEngineUrlBase,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         InvoicingEngineRoutes.CustomersUrlBase);
@@ -62,7 +62,7 @@ namespace PrimaveraStoreServer.Integration
                 await authenticationProvider.SetAccessTokenAsync(client);
 
                 string url = string.Format(InvoicingEngineRoutes.InvoicesPrintUrlBase,
-                        InvoicingEngineRoutes.InvoicingEngineUrlBase,
+                        Constants.baseAppUrl,
                         Identity.Account,
                         Identity.Subscription,
                         InvoicingEngineRoutes.InvoicesUrlBase,

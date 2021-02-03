@@ -9,6 +9,7 @@
         /// The Jasmin base application URL.
         /// </summary>
         public const string baseAppUrl = "https://st-invoicing-engine.primaverabss.com";
+        public const string MiddlewareUrlBase = "https://st-invoicing-engine.primaverabss.com/middleware/api/v1";
 
         /// <summary>
         /// The default culture
@@ -44,30 +45,28 @@
 
         internal static class InvoicingEngineRoutes
         {
-            internal const string InvoicingEngineUrlBase = "https://st-invoicing-engine.primaverabss.com/api";
+//            internal const string  = "https://st-invoicing-engine.primaverabss.com/api";
 
             internal const string CompaniesRoute = "/corepatterns/companies";
             internal const string MediaTypeWithQualityHeaderKey = "application/json";
             internal const string AuthenticationHeaderKey = "Bearer";
 
-            internal const string InvoicesPostRoute = "{0}/{1}/{2}/{3}";
+            internal const string InvoicesPostRoute = "{0}/api/{1}/{2}/{3}";
             internal const string InvoicesUrlBase = "/billing/invoices";
-            internal const string TemplateUrlBase = "BILLING_MATERIALSINVOICEREPORT_PRISTORE";
+            internal const string TemplateUrlBase = "BILLING_MATERIALSINVOICEREPORT";
 
-            internal const string InvoicesPrintUrlBase = "{0}/{1}/{2}/{3}/{4}/print?template={5}";
+            internal const string InvoicesPrintUrlBase = "{0}/api/{1}/{2}/{3}/{4}/print?template={5}";
 
-            internal const string CustomerPostRoute = "{0}/{1}/{2}/{3}";
+            internal const string CustomerPostRoute = "{0}/api/{1}/{2}/{3}";
             internal const string CustomersUrlBase = "/salescore/customerparties";
 
-            internal const string ItemPostRoute = "{0}/{1}/{2}/{3}";
+            internal const string ItemPostRoute = "{0}/api/{1}/{2}/{3}";
             internal const string ItemUrlBase = "/salescore/salesitems";
-            internal const string ItemValidateRoute = "https://st-invoicing-engine.primaverabss.com/api/{0}/{1}/{2}/{3}/odata?$select=Id&$filter= NaturalKey eq '{4}'";
+            internal const string ItemValidateRoute = "{0}/api/{1}/{2}/{3}/{4}/odata?$select=Id&$filter= NaturalKey eq '{5}'";
         }
 
         internal static class MiddlewareRoutes 
         { 
-            internal const string MiddlewareUrlBase = "https://st-invoicing-engine.primaverabss.com/middleware/api/v1";
-
             internal const string InvoicesPostRoute = "{0}/{1}/{2}/{3}";
             internal const string InvoicesUrlBase = "/billing/invoices";
         }
