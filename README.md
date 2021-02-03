@@ -22,8 +22,6 @@ Para tal é composto por dois projetos
    
    Alterar no ficheiro de constantes as seguintes variaveis se necessário
    
-![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/Configura%C3%A7%C3%A3o.PNG?raw=true)
-
 - ClientId 
 > Cliente para autenticar os pedidos
 - ClientSecret
@@ -32,7 +30,10 @@ Para tal é composto por dois projetos
 > o Cliente deve ter acesso a esta conta
 - IdentityUrl 
 > por defeito está o url de staging
--BaseAppUrl
+- BaseAppUrl
 > por defeito está o url de staging
 - Company
 > empresa tem de existir na subscrição
+
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/Configura%C3%A7%C3%A3o.PNG?raw=true)
+
