@@ -26,7 +26,7 @@
             internal const string TokenUriKey = "connect/token";
             internal const string ApplicationScopes = "application lithium-ies lithium-ies-wb";
             internal const string ClientId = "IE-801317-0063";
-            internal const string ClientSecret = "3b1340b1-62ea-40c9-b8ff-19aa6d42f23c";
+            internal const string ClientSecret = "";
             internal const string Account = "801317";
             internal const string Subscription = "801317-0063";
             internal const string Company = "PRIMAVERASTORE";
