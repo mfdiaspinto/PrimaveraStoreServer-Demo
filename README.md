@@ -1,4 +1,4 @@
-# Primavera Store Server - Demo
+# Primavera Store Server - Demo 
 Demo de projeto de integração com o PRIMAVERA Invoicing Engine
 
 Este prototipo tem como objetivo dar alguns exemplos de utilização da API do Invoicing Engine e do seu Middleware
@@ -26,7 +26,7 @@ Para tal é composto por dois projetos
 > Cliente para autenticar os pedidos
 - ClientSecret
 > Secret para autenticar os pedidos
--Account e Subscription
+- Account e Subscription
 > o Cliente deve ter acesso a esta conta
 - IdentityUrl 
 > por defeito está o url de staging
@@ -44,7 +44,7 @@ Existem um conjunto de testes unitários que podem ser executados individualment
 
 ![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/unittests.PNG?raw=true)
 
-## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do prototipo Store e podem ser executadas via postman 
+## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do prototipo PRIMAVERA Store e podem ser executadas via postman 
 
 Existem um conjunto de rotas disponiveis no projeto store demo que demonstram a execução de alguns cenários de integração
 
