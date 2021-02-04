@@ -3,49 +3,48 @@ using System.Collections.Generic;
 
 namespace PrimaveraStoreServer.Resources
 {
-    public class Product
+    public class ItemLine
     {
-        public Product(string key, string title, double price)
+        public ItemLine(string key, string title, int quantity, double price)
         {
             this.key = key;
             this.title = title;
             this.price = price;
+            this.quantity = quantity;
         }
 
         public double price { get; set; }
 
         public string title { get; set; }
-        
-        public string key { get; set; }
-    }
 
-    public class ItemLine
-    {
-        public Product product { get; set; }
+        public string key { get; set; }
+
         public int quantity { get; set; }
-        public double totalPrice { get; set; }
     }
 
     public class Client
     {
+        public Client()
+        {
+
+        }
+
         public Client(string key, string name, string addressLine1, string city, string code)
         {
             this.key = key;
             this.name = name;
             this.addressLine1 = addressLine1;
             this.city = city;
-            this.code = code;
+            this.postalzone = code;
         }
 
         public string addressLine1 { get; set; }
 
-        public string code { get; set; }
+        public string postalzone { get; set; }
         
         public string city { get; set; }
         
         public string name { get; set; }
-
-        public bool isIndif { get; set; }
 
         public string key { get; set; }
     }

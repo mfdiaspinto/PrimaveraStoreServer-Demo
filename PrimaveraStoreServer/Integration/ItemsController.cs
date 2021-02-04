@@ -53,6 +53,35 @@ namespace PrimaveraStoreServer.Integration
             }            
         }
 
+        public static async Task<string> GetItemToIEAsync(AuthenticationProvider authenticationProvider, Guid id)
+        {
+            // Create the HTTP client to perform the request
+
+            using (HttpClient client = new HttpClient())
+            {
+                await authenticationProvider.SetAccessTokenAsync(client);
+
+                string url = string.Format(
+                        InvoicingEngineRoutes.ItemPostRoute,
+                        Constants.baseAppUrl,
+                        Identity.Account,
+                        Identity.Subscription,
+                        InvoicingEngineRoutes.ItemUrlBase + "/" + id);
+
+                var response = await client.GetAsync(url).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
+            }
+        }
+
+
         public static async Task<bool> ValidateIfExistsIEAsync(AuthenticationProvider authenticationProvider, string module, string service, string key)
         {
             // Create the HTTP client to perform the request

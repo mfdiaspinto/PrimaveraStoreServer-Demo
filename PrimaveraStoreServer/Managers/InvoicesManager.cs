@@ -51,6 +51,22 @@ namespace PrimaveraStoreServer.Managers
             }
         }
 
+
+        public static async Task<string> GetInvoiceAsync(AuthenticationProvider authenticationProvider, Guid id)
+        {
+            try
+            {
+                // Inserir invoice do IE
+
+                return await InvoicesController.GetInvoiceFromIEAsync(authenticationProvider, id).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
+
+
         public static async Task<Stream> PrintInvoiceAsync(AuthenticationProvider authenticationProvider, string id)
         {
             try
@@ -84,11 +100,11 @@ namespace PrimaveraStoreServer.Managers
             }
         }
 
-        public static async Task<Dictionary<string, string>> CreateBulkInvoiceMiddlewareAsync(AuthenticationProvider authenticationProvider, List<OrderResource> orders)
+        public static async Task<List<MiddlewareResponse>> CreateBulkInvoiceMiddlewareAsync(AuthenticationProvider authenticationProvider, List<OrderResource> orders)
         {
             try
             {
-                Dictionary<string, string> result = new Dictionary<string, string>();
+                List<MiddlewareResponse> result = new List<MiddlewareResponse>();
 
                 // Create the HTTP client to perform the request
 
@@ -104,14 +120,7 @@ namespace PrimaveraStoreServer.Managers
 
                         MiddlewareResponse r = JsonSerializer.Deserialize<MiddlewareResponse>(res);
 
-                        if (!result.ContainsKey(order.key))
-                        {
-                            result.Add(order.key, r.id);
-                        }
-                        else
-                        {
-                            result[order.key] = r.id;
-                        }
+                        result.Add(r);
                     }
                 }
 
@@ -123,67 +132,30 @@ namespace PrimaveraStoreServer.Managers
             }
         }
 
-        public static async Task<Dictionary<string, string>> CreateValidateInvoiceMiddlewareAsync(AuthenticationProvider authenticationProvider, List<OrderResource> orders)
+        public static async Task<MiddlewareResponse> GetStateInvoiceMiddlewareAsync(AuthenticationProvider authenticationProvider, Guid id)
         {
             try
             {
-                Dictionary<string, string> result = new Dictionary<string, string>();
-
                 // Create the HTTP client to perform the request
 
                 using (HttpClient client = new HttpClient())
                 {
                     await authenticationProvider.SetAccessTokenAsync(client);
 
-                    foreach (var order in orders)
+                    MiddlewareResponse res = await MiddlewareController.GetInvoiceProcessAsync(client, id);
+
+                    if (res.state.Equals("Succeeded", StringComparison.OrdinalIgnoreCase))
                     {
-                        var response = await client.GetAsync("https://invoicing-engine.primaverabss.com/middleware/api/v1/247504/247504-0001/billing/invoices/" + order.invoiceProcId + "/output").ConfigureAwait(false);
-
-                        if (response.IsSuccessStatusCode)
-                        {
-                            var jsonString = await response.Content.ReadAsStringAsync();
-
-                            if (!string.IsNullOrEmpty(jsonString))
-                            {
-                                MiddlewareOutpuResponse r = JsonSerializer.Deserialize<MiddlewareOutpuResponse>(jsonString);
-
-                                if (!string.IsNullOrEmpty(r.invoiceId))
-                                {
-                                    if (!result.ContainsKey(order.key))
-                                    {
-                                        result.Add(order.key, r.invoiceId);
-                                    }
-                                    else
-                                    {
-                                        result[order.key] = r.invoiceId;
-                                    }
-                                }
-
-                            }
-                            else
-                            {
-                                if (!result.ContainsKey(order.key))
-                                {
-                                    result.Add(order.key, "");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            string a = await response.Content.ReadAsStringAsync();
-                            throw new Exception(a);
-                        }
+                        res.details = await MiddlewareController.GetInvoiceOutputProcessAsync(client, id);
                     }
-                }
 
-                return result;
+                    return res;
+                }
             }
             catch (Exception exception)
             {
-                throw new Exception("Error geting the current company.");
+                throw new Exception(exception.Message);
             }
-
-            return null;
         }
 
         #endregion

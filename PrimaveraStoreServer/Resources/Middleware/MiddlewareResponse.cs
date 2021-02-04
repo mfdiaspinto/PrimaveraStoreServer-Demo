@@ -14,6 +14,8 @@ namespace PrimaveraStoreServer.Resources.Middleware
         public DateTime registrationDate { get; set; }
         public int retryCount { get; set; }
         public string subscriptionKey { get; set; }
+
+        public MiddlewareOutpuResponse details { get; set; }
     }
 
     public class MiddlewareOutpuResponse

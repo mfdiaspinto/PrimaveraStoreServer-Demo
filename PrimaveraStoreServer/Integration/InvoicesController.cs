@@ -53,6 +53,36 @@ namespace PrimaveraStoreServer.Integration
             }            
         }
 
+
+        public static async Task<string> GetInvoiceFromIEAsync(AuthenticationProvider authenticationProvider, Guid id)
+        {
+            // Create the HTTP client to perform the request
+
+            using (HttpClient client = new HttpClient())
+            {
+                await authenticationProvider.SetAccessTokenAsync(client);
+                              
+                string url = string.Format(
+                        InvoicingEngineRoutes.InvoicesPostRoute,
+                        Constants.baseAppUrl,
+                        Identity.Account,
+                        Identity.Subscription,
+                        InvoicingEngineRoutes.InvoicesUrlBase + "/" + id);
+
+                var response = await client.GetAsync(url).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
+            }
+        }
+
+
         public static async Task<Stream> PrintInvoiceFromIEAsync(AuthenticationProvider authenticationProvider, string id)
         {
             // Create the HTTP client to perform the request

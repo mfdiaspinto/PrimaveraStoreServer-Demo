@@ -34,26 +34,32 @@ namespace PrimaveraStoreServer.Managers
             }
         }
 
-        public static  async Task<bool> CreateItemsAsync(AuthenticationProvider authenticationProvider, ProductResource product)
+        public static  async Task<string> CreateItemsAsync(AuthenticationProvider authenticationProvider, ProductResource product)
         {
             try
             {
                 SalesItemResource resource = Mappers.ToItem(product);
 
-                 var res = await ItemsController.InsertItemToIEAsync(authenticationProvider, resource).ConfigureAwait(false);
-           
-                if (!string.IsNullOrEmpty(res))
-                {
-                    return true;
-                }
+                 return await ItemsController.InsertItemToIEAsync(authenticationProvider, resource).ConfigureAwait(false);
             }
             catch (Exception exception)
             {
                 throw new Exception(exception.Message);
             }
-
-            return false;
         }
+
+        public static async Task<string> GeiItemsAsync(AuthenticationProvider authenticationProvider, Guid id)
+        {
+            try
+            {
+                return await ItemsController.GetItemToIEAsync(authenticationProvider, id).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
+
 
         public static async Task<string> CreateCustomersAsync(AuthenticationProvider authenticationProvider, Client customer)
         {
@@ -71,6 +77,21 @@ namespace PrimaveraStoreServer.Managers
                 throw new ExecutionEngineException(exception.Message);
             }
         }
+
+        public static async Task<string> GetCustomersAsync(AuthenticationProvider authenticationProvider, Guid id)
+        {
+            try
+            {
+                // Inserir invoice do IE
+
+                return await CustomerController.GetCustomerFromIEAsync(authenticationProvider, id).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                throw new ExecutionEngineException(exception.Message);
+            }
+        }
+
         #endregion
     }
 }

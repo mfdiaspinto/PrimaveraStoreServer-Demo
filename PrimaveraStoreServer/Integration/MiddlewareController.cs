@@ -82,6 +82,55 @@ namespace PrimaveraStoreServer.Integration
             }
         }
 
+        public static async Task<MiddlewareResponse> GetInvoiceProcessAsync(HttpClient client, Guid id)
+        {
+            // Create the HTTP client to perform the request
+
+            string url = string.Format(
+                    MiddlewareRoutes.InvoicesPostRoute,
+                    Constants.MiddlewareUrlBase,
+                    Identity.Account,
+                    Identity.Subscription,
+                    MiddlewareRoutes.InvoicesUrlBase + "/" + id);
+
+            var response = await client.GetAsync(url).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MiddlewareResponse r = JsonSerializer.Deserialize<MiddlewareResponse>(await response.Content.ReadAsStringAsync());
+
+                return r;
+            }
+            else
+            {
+                throw new Exception(await response.Content.ReadAsStringAsync());
+            }
+        }
+
+        public static async Task<MiddlewareOutpuResponse> GetInvoiceOutputProcessAsync(HttpClient client, Guid id)
+        {
+            // Create the HTTP client to perform the request
+
+            string url = string.Format(
+                    MiddlewareRoutes.InvoicesPostRoute,
+                    Constants.MiddlewareUrlBase,
+                    Identity.Account,
+                    Identity.Subscription,
+                    MiddlewareRoutes.InvoicesUrlBase + "/" + id + "/output");
+
+            var response = await client.GetAsync(url).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MiddlewareOutpuResponse r = JsonSerializer.Deserialize<MiddlewareOutpuResponse>(await response.Content.ReadAsStringAsync());
+
+                return r;
+            }
+            else
+            {
+                throw new Exception(await response.Content.ReadAsStringAsync());
+            }
+        }
 
         #endregion
     }
