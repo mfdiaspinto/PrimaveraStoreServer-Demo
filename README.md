@@ -54,3 +54,10 @@ Existem um conjunto de testes unitários que podem ser executados individualment
 Existem um conjunto de rotas disponíveis no projeto store demo que demonstram a execução de alguns cenários de integração, ao correrem a solução Webapi no browser vai ser encaminhado para uma pagina swagger que tem disponível as várias rotas e estas podem ser executadas via browser
 
 ![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/doc.PNG?raw=true)
+
+Para executar o pedido no swager é apenas necessário 
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/doc2.PNG?raw=true)
+
+Preencher os dados e executar
+![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/doc3.PNG?raw=true)
+
