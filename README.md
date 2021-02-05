@@ -1,7 +1,7 @@
 # Primavera Store Server - Demo 
 Demo de projeto de integração com o PRIMAVERA Invoicing Engine
 
-Este prototipo tem como objetivo dar alguns exemplos de utilização da API do Invoicing Engine e do seu Middleware
+Este protótipo tem como objetivo dar alguns exemplos de utilização da API do Invoicing Engine e do seu Middleware
 
 Para tal é composto por dois projetos
  - PrimaveraStoreServer (WebAPI)
@@ -10,17 +10,22 @@ Para tal é composto por dois projetos
  - TestIntegrations (UNITTEST)
  > Este projeto tem a responsabilidade ter conjunto de testes unitários que executa métodos desenvolvidos no PrimaveraStore.
  
- ## Requests desenvolvidos no prototipo
+ ## Requests desenvolvidos no protótipo
  
   - Criar Artigo
   - Criar Cliente
+  - Get Artigo
+  - Get Cliente
   - Criar Fatura
+  - Get Fatura
+  - Print Fatura
   - Criar Fatura via middleware
   - Criar Faturas em bulk
+  - Get Processo de criação de fatura
   
    ## Como começar:
    
-   Alterar no ficheiro de constantes as seguintes variaveis se necessário
+   Alterar no ficheiro de constantes as seguintes variáveis se necessário
    
 - ClientId 
 > Cliente para autenticar os pedidos
@@ -44,8 +49,8 @@ Existem um conjunto de testes unitários que podem ser executados individualment
 
 ![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/unittests.PNG?raw=true)
 
-## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do prototipo PRIMAVERA Store e podem ser executadas via postman 
+## Ao correr o projeto Webapi ficam disponiveis um conjunto de API do protótipo PRIMAVERA Store e podem ser executadas via documentação swagger ou via postman 
 
-Existem um conjunto de rotas disponiveis no projeto store demo que demonstram a execução de alguns cenários de integração
+Existem um conjunto de rotas disponíveis no projeto store demo que demonstram a execução de alguns cenários de integração, ao correrem a solução Webapi no browser vai ser encaminhado para uma pagina swagger que tem disponível as várias rotas e estas podem ser executadas via browser
 
 ![alt text](https://github.com/mfdiaspinto/PrimaveraStoreServer-Demo/blob/master/Files/doc.PNG?raw=true)
